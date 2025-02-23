@@ -2,7 +2,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
     var userInput = document.getElementById('userInput').value;
     var outputText = document.getElementById('outputText');
 
-    var apiKey = 'https://chatgpt.com/g/g-676239fc56b08191b242b8701b3d8a73-tsmym-kht-ldrs';  // مفتاح API الخاص بـ ChatGPT
+    var apiKey = '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';  // مفتاح API الخاص بـ ChatGPT
     var prompt = `صحح النص التالي: ${userInput}`;
 
     var data = {
