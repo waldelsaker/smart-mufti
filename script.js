@@ -2,7 +2,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
     var userInput = document.getElementById('userInput').value;
     var outputText = document.getElementById('outputText');
 
-    var apiKey = process.env.CHATBASE_API_KEY;  // أخذ المفتاح من المتغير البيئي
+    var apiKey = process.env.CHATBASE_API_KEY;  // تأكد من إضافة مفتاح API بشكل آمن
     var userQuery = userInput;  // السؤال الذي يدخله المستخدم
 
     var data = {
