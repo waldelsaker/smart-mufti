@@ -25,6 +25,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(result => {
+        // إذا كانت الإجابة موجودة، نعرضها، وإذا لا توجد إجابة نعرض رسالة خطأ
         outputText.textContent = result.answer || "لا توجد إجابة";  // عرض الفتوى للمستخدم
     })
     .catch(error => {
