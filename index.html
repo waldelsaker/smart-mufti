@@ -3,19 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> المفتي الذكي تنفيذ د. هيثم </title>
-    <link rel="stylesheet" href="style.css">
+    <title>المفتي الذكي</title>
+    <style>
+        #outputText {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            min-height: 100px;
+            font-size: 16px;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="width: 80%; margin: auto;">
         <h1>المفتي الذكي</h1>
-        <p>اكتب سؤالك، و وسأجيبك وفق رؤية دولة الإمارات العربية المتحدة.</p>
+        <p>اكتب سؤالك، وسأقدم لك الفتوى بناءً على الموجهات الخاصة.</p>
+
+        <!-- حقل النص لكتابة السؤال -->
         <textarea id="userInput" placeholder="اكتب سؤالك هنا..."></textarea><br>
-        <button id="submitButton">م ما سؤالك للمفتي الذكي </button>
+
+        <!-- زر إرسال السؤال -->
+        <button id="submitButton">إرسال السؤال</button>
+
+        <!-- زر مسح السؤال -->
+        <button id="clearButton">مسح السؤال</button>
+
         <div id="outputText"></div>
+        
+        <!-- تضمين Chatbase عبر iframe -->
+        <iframe
+            src="https://www.chatbase.co/chatbot-iframe/ExUT-vyE-AcS2ur1EJnAW"
+            width="100%"
+            style="height: 100%; min-height: 700px"
+            frameborder="0"
+        ></iframe>
+        
     </div>
     
-    <!-- ربط ملف JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
