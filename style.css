@@ -1,31 +1,70 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 50px;
+/* تخصيص نافذة الدردشة */
+.chatbase-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
-textarea {
-    width: 80%;
-    height: 100px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+/* تخصيص زر فتح الدردشة */
+.chatbase-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
     cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #45a049;
+.chatbase-toggle:hover {
+    background-color: #0056b3;
 }
 
-#outputText {
-    margin-top: 20px;
+/* تخصيص زر مسح الدردشة */
+.clear-chat {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.clear-chat:hover {
+    background-color: #cc0000;
+}
+
+/* تخصيص الرسائل */
+.chat-message {
     padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    margin: 5px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: black;
+    align-self: flex-start;
 }
