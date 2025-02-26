@@ -33,6 +33,7 @@
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         button:hover {
@@ -70,4 +71,21 @@
         <!-- زر إرسال السؤال -->
         <button id="submitButton">إرسال السؤال</button>
 
-  
+        <!-- زر مسح السؤال -->
+        <button id="clearButton">مسح السؤال</button>
+
+        <!-- مربع عرض الإجابة -->
+        <div id="outputText"></div>
+
+        <!-- تضمين Chatbase عبر iframe داخل التصميم -->
+        <iframe
+            src="https://www.chatbase.co/chatbot-iframe/ExUT-vyE-AcS2ur1EJnAW"
+            width="100%"
+            style="height: 600px; border-radius: 8px; margin-top: 20px;"
+            frameborder="0"
+        ></iframe>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
