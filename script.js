@@ -2,16 +2,20 @@ document.getElementById('submitButton').addEventListener('click', function() {
     var userInput = document.getElementById('userInput').value;
     var outputText = document.getElementById('outputText');
 
-    var apiKey = 'sk-svcacct-jACeTmhL4Wqp_SXWYufJW2KE838dmG8AbPtrFEXzFrqb5c-30Unz6mvwTZmINT3BlbkFJDN1vzdieRiZl3bZymPnDs0Q-0QPOtQG798pRVa9WtcoTu5Ocp5NwxW95uOTzwA';  // مفتاح API الخاص بـ ChatGPT
-    var prompt = `صحح النص التالي: ${userInput}`;
+    var apiKey = process.env.CHATBASE_API_KEY;  // أخذ المفتاح من المتغير البيئي
+    var userQuery = userInput;  // السؤال الذي يدخله المستخدم
 
     var data = {
-        model: 'gpt-3.5-turbo',
-        prompt: prompt,
-        max_tokens: 500
+        "messages": [
+            {
+                "role": "user", 
+                "content": userQuery
+            }
+        ]
     };
 
-    fetch('https://api.openai.com/v1/completions', {
+    // هنا نستخدم Chatbase API للرد
+    fetch('https://api.chatbase.com/v1/query', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -21,10 +25,16 @@ document.getElementById('submitButton').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(result => {
-        outputText.textContent = result.choices[0].text.trim();  // عرض الفتوى للمستخدم
+        outputText.textContent = result.answer || "لا توجد إجابة";  // عرض الفتوى للمستخدم
     })
     .catch(error => {
         console.error('Error:', error);
         outputText.textContent = 'حدث خطأ أثناء محاولة الإجابة على سؤالك.';
     });
+});
+
+// إضافة وظيفة مسح النص في textarea
+document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('userInput').value = '';  // مسح السؤال في textarea
+    document.getElementById('outputText').textContent = '';  // مسح النص في النتيجة
 });
