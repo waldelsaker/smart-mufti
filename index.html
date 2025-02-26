@@ -50,13 +50,11 @@
             margin: auto;
         }
 
-        /* إعداد iframe داخل container */
-        iframe {
-            width: 100%;
-            height: 600px;
-            border-radius: 8px;
-            border: none;
+        /* التأكد من أن البوت يظهر داخل التصميم */
+        #chatbase {
             margin-top: 20px;
+            width: 100%;
+            min-height: 500px;
         }
     </style>
 </head>
@@ -76,15 +74,41 @@
 
         <!-- مربع عرض الإجابة -->
         <div id="outputText"></div>
-
-        <!-- تضمين Chatbase عبر iframe داخل التصميم -->
-        <iframe
-            src="https://www.chatbase.co/chatbot-iframe/ExUT-vyE-AcS2ur1EJnAW"
-            width="100%"
-            style="height: 600px; border-radius: 8px; margin-top: 20px;"
-            frameborder="0"
-        ></iframe>
+        
+        <!-- تحميل السكربت الخاص بـ Chatbase -->
+        <div id="chatbase"></div>
     </div>
+
+    <!-- إضافة الكود الخاص بـ Chatbase -->
+    <script>
+        (function(){
+            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+                window.chatbase = (...arguments) => {
+                    if (!window.chatbase.q) { window.chatbase.q = [] }
+                    window.chatbase.q.push(arguments)
+                };
+                window.chatbase = new Proxy(window.chatbase, {
+                    get(target, prop) {
+                        if (prop === "q") { return target.q }
+                        return (...args) => target(prop, ...args)
+                    }
+                })
+            }
+            const onLoad = function(){
+                const script = document.createElement("script");
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.id = "ExUT-vyE-AcS2ur1EJnAW";
+                script.domain = "www.chatbase.co";
+                document.body.appendChild(script);
+            };
+
+            if (document.readyState === "complete") {
+                onLoad();
+            } else {
+                window.addEventListener("load", onLoad);
+            }
+        })();
+    </script>
 
     <script src="script.js"></script>
 </body>
